@@ -4,11 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.textfield.TextInputEditText;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -24,12 +28,14 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText edit = findViewById(R.id.edit1);
+                EditText edit = findViewById(R.id.nombre);
                 String txt = edit.getText().toString();
                 Intent intent = new Intent(MainActivity.this,SecondActivity.class);
                 intent.putExtra("txt",txt);
                 startActivity(intent);
             }
         });
+
+
     }
 }

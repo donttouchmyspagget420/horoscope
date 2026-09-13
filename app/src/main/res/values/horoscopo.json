@@ -1,0 +1,76 @@
+{
+  "horoscopo": {
+    "aries": {
+      "signo": "Aries",
+      "fechas": "21/03/26 - 19/04/26",
+      "elemento": "Fuego",
+      "prediccion": "Tu energía y dinamismo estarán al máximo. Es un momento propicio para tomar la iniciativa en proyectos profesionales y personales."
+    },
+    "tauro": {
+      "signo": "Tauro",
+      "fechas": "20/04/26 - 20/05/26",
+      "elemento": "Tierra",
+      "prediccion": "La paciencia y la constancia darán frutos. Mantén la calma ante los cambios imprevistos en las finanzas."
+    },
+    "geminis": {
+      "signo": "Géminis",
+      "fechas": "21/05/26 - 20/06/26",
+      "elemento": "Aire",
+      "prediccion": "Tu mente estará especialmente analítica y creativa. Excelente periodo para iniciar estudios o establecer nuevas conexiones sociales."
+    },
+    "cancer": {
+      "signo": "Cáncer",
+      "fechas": "21/06/26 - 22/07/26",
+      "elemento": "Agua",
+      "prediccion": "Momento ideal para enfocarte en las relaciones familiares y emocionales. Escucha tu intuición antes de tomar decisiones importantes."
+    },
+    "leo": {
+      "signo": "Leo",
+      "fechas": "23/07/26 - 22/08/26",
+      "elemento": "Fuego",
+      "prediccion": "Destacarás por tu liderazgo y carisma natural. Aprovecha este empuje para consolidar metas que tenías en pausa."
+    },
+    "virgo": {
+      "signo": "Virgo",
+      "fechas": "23/08/26 - 22/09/26",
+      "elemento": "Tierra",
+      "prediccion": "La organización será tu mejor aliada. Resolverás detalles pendientes en el trabajo y ganarás tranquilidad mental."
+    },
+    "libra": {
+      "signo": "Libra",
+      "fechas": "23/09/26 - 22/10/26",
+      "elemento": "Aire",
+      "prediccion": "Buscarás armonía y equilibrio en tu entorno. Es una buena etapa para negociar acuerdos y renovar tu espacio vital."
+    },
+    "escorpio": {
+      "signo": "Escorpio",
+      "fechas": "23/10/26 - 21/11/26",
+      "elemento": "Agua",
+      "prediccion": "Tu percepción estará muy agudizada. Etapa de transformación personal en la que dejarás atrás lo que ya no aporta a tu crecimiento."
+    },
+    "sagitario": {
+      "signo": "Sagitario",
+      "fechas": "22/11/26 - 21/12/26",
+      "elemento": "Fuego",
+      "prediccion": "Tu espíritu aventurero se verá estimulado. Surgirán oportunidades para aprender algo nuevo o planificar viajes."
+    },
+    "capricornio": {
+      "signo": "Capricornio",
+      "fechas": "22/12/26 - 19/01/27",
+      "elemento": "Tierra",
+      "prediccion": "El esfuerzo continuo te traerá reconocimiento en el ámbito laboral. Establece objetivos realistas a largo plazo."
+    },
+    "acuario": {
+      "signo": "Acuario",
+      "fechas": "20/01/26 - 18/02/26",
+      "elemento": "Aire",
+      "prediccion": "Tu enfoque innovador te permitirá encontrar soluciones originales a problemas antiguos. Buen momento para el trabajo en equipo."
+    },
+    "piscis": {
+      "signo": "Piscis",
+      "fechas": "19/02/26 - 20/03/26",
+      "elemento": "Agua",
+      "prediccion": "Tu sensibilidad y empatía favorecerán el entendimiento con los demás. Dedica tiempo a actividades artísticas o meditativas."
+    }
+  }
+}

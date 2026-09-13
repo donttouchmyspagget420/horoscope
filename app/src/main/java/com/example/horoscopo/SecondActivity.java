@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -23,11 +24,13 @@ public class SecondActivity extends AppCompatActivity {
         String txt = intent.getStringExtra("txt");
         Toast.makeText(SecondActivity.this,txt,Toast.LENGTH_SHORT).show();
 
-        Button btn = findViewById(R.id.but);
+        Button btn = findViewById(R.id.button2);
+        DatePicker picker = findViewById(R.id.date);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int year = picker.getYear();
                 finishAffinity();
             }
         });
