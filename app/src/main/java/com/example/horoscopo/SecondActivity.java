@@ -21,17 +21,26 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
 
         Intent intent = getIntent();
-        String txt = intent.getStringExtra("txt");
-        Toast.makeText(SecondActivity.this,txt,Toast.LENGTH_SHORT).show();
+        String nombre = intent.getStringExtra("nombre");
 
         Button btn = findViewById(R.id.button2);
+        Button prev = findViewById(R.id.prev);
         DatePicker picker = findViewById(R.id.date);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int year = picker.getYear();
-                finishAffinity();
+                int month = picker.getMonth();
+                int day = picker.getDayOfMonth();
+                Toast.makeText(SecondActivity.this,day + "/" + month + "/" + year,Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        prev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

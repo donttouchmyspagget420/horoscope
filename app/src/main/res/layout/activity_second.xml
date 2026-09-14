@@ -6,20 +6,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     tools:context=".SecondActivity">
 
-        <DatePicker
-            android:id="@+id/date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:datePickerMode="calendar" />
-
-        <Button
-            android:id="@+id/button2"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="proximo"
-            tools:layout_editor_absoluteX="186dp"
-            tools:layout_editor_absoluteY="190dp" />
+            android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/prev"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:textColor="@android:color/holo_purple"
+                    android:text="&lt;--"
+                    android:textSize="32dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+                <DatePicker
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:datePickerMode="calendar" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="proximo"
+                    tools:layout_editor_absoluteX="186dp"
+                    tools:layout_editor_absoluteY="190dp" />
+        </LinearLayout>
 </LinearLayout>
