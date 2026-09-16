@@ -11,6 +11,10 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
+
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -33,7 +37,16 @@ public class SecondActivity extends AppCompatActivity {
                 int year = picker.getYear();
                 int month = picker.getMonth();
                 int day = picker.getDayOfMonth();
-                Toast.makeText(SecondActivity.this,day + "/" + month + "/" + year,Toast.LENGTH_SHORT).show();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("nombre", nombre);
+                bundle.putInt("year",year);
+                bundle.putInt("month",month);
+                bundle.putInt("day",day);
+
+                Intent intent = new Intent(SecondActivity.this,ThirdActivity.class);
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
             }
         });
 
