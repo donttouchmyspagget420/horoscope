@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
@@ -34,13 +35,11 @@ public class SecondActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int year = picker.getYear();
                 int month = picker.getMonth();
                 int day = picker.getDayOfMonth();
 
                 Bundle bundle = new Bundle();
                 bundle.putString("nombre", nombre);
-                bundle.putInt("year",year);
                 bundle.putInt("month",month);
                 bundle.putInt("day",day);
 

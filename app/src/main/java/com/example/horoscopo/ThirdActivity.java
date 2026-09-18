@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +12,36 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import org.json.*;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+
 public class ThirdActivity extends AppCompatActivity {
+
+    private void activity(){
+        InputStream stream = null;
+
+        try {
+            stream = this.getAssets().open("horoscopo.json");
+        } catch (IOException e) {
+            Toast.makeText(this,"no puede leer el horoscopo",Toast.LENGTH_SHORT).show();
+        }
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getBundleExtra("bundle");
+
+        if(stream != null){
+            readJason(stream);
+        }
+    }
+
+    private void readJason(InputStream stream){}
+
+    private String checkSign(){
+        return "";
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +54,6 @@ public class ThirdActivity extends AppCompatActivity {
             return insets;
         });
 
-        Intent intent = getIntent();
-        Bundle bundle = intent.getBundleExtra("bundle");
-
         Button prev = findViewById(R.id.prev1);
         prev.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,5 +61,7 @@ public class ThirdActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        activity();
     }
 }
