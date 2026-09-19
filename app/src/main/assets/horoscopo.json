@@ -1,5 +1,4 @@
 {
-  "horoscopo": {
     "aries": {
       "signo": "Aries",
       "fechas": "21/3-19/4",
@@ -72,5 +71,4 @@
       "elemento": "Agua",
       "prediccion": "Tu sensibilidad y empatía favorecerán el entendimiento con los demás. Dedica tiempo a actividades artísticas o meditativas."
     }
-  }
 }
