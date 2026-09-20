@@ -13,14 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-
+    private void btnsSetup(){
         Button btn = findViewById(R.id.button);
-        Button close = findViewById(R.id.close);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,13 +29,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        closeBtnSetup();
+    }
+
+    private void closeBtnSetup(){
+        Button close = findViewById(R.id.close);
+
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finishAffinity();
             }
         });
+    }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
 
+        btnsSetup();
     }
 }

@@ -1,6 +1,7 @@
 package com.example.horoscopo;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -83,13 +84,29 @@ public class ThirdActivity extends AppCompatActivity {
                 continue;
             }
 
-            sign = calculate(month,day,obj);
-            if(!sign.isBlank()) showHoroscope(obj,bundle1.getString("nombre"));
+            if(calculate(month,day,obj)) showHoroscope(obj,bundle1.getString("nombre"));
         }
     }
 
-    private String calculate(int month, int day, JSONObject obj){
-        return "";
+    private boolean calculate(int month, int day, JSONObject obj){
+        String dateString;
+        try {
+            dateString = obj.getString("fechas");
+        } catch (JSONException e) {
+            Toast.makeText(this,"no puede parsear el horoscopo",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        String[] dates = dateString.split("-");
+
+        String[] earlys = dates[0].split("/");
+        String[] lates = dates[1].split("/");
+
+        int target = month * 100 + day;
+        int early = Integer.parseInt(earlys[1]) * 100 + Integer.parseInt(earlys[0]);
+        int late = Integer.parseInt(lates[1]) * 100 + Integer.parseInt(lates[0]);
+
+        return early >= target && late <= target;
     }
 
     private void showHoroscope(JSONObject obj,String nombre){
@@ -130,6 +147,27 @@ public class ThirdActivity extends AppCompatActivity {
 
     }
 
+    private void prevBtnSetup(){
+        Button prev = findViewById(R.id.prev1);
+        prev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    private void closeBtnSetup(){
+        Button prev = findViewById(R.id.close1);
+        prev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/dQw4w9WgXcQ?si=XhE8JXhag695bygc"));
+                startActivity(intent);
+            }
+        });
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -141,14 +179,8 @@ public class ThirdActivity extends AppCompatActivity {
             return insets;
         });
 
-        Button prev = findViewById(R.id.prev1);
-        prev.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
+        prevBtnSetup();
+        closeBtnSetup();
         activity("horoscopo.json");
     }
 }
