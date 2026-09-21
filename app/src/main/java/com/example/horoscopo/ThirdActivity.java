@@ -3,6 +3,7 @@ package com.example.horoscopo;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -63,28 +64,31 @@ public class ThirdActivity extends AppCompatActivity {
         try {
              arr = new JSONArray(json);
         } catch (JSONException e) {
-            Toast.makeText(this,"no puede parsear el horoscopo",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"no puede parsear(checksign) el horoscopo",Toast.LENGTH_SHORT).show();
         }
         Intent intent = getIntent();
-        Bundle bundle = intent.getBundleExtra("bundle");
+        Bundle bundle1 = intent.getBundleExtra("bundle");
 
-        if(bundle == null) finish();
-        Bundle bundle1 = bundle.getBundle("bundle");
+        if(bundle1 == null) {
+            Log.e("bundle","vacio");
+            finish();}
 
         int month = bundle1.getInt("month");
         int day = bundle1.getInt("day");
-        String sign = null;
 
         for (int i = 0; i < arr.length(); i++){
-            JSONObject obj = null;
+            JSONObject obj;
             try {
                 obj = arr.getJSONObject(i);
             } catch (JSONException e) {
-                Toast.makeText(this,"no puede parsear el horoscopo",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"no puede parsear(checksign1) el horoscopo",Toast.LENGTH_SHORT).show();
                 continue;
             }
 
-            if(calculate(month,day,obj)) showHoroscope(obj,bundle1.getString("nombre"));
+            if(calculate(month,day,obj)){
+                showHoroscope(obj,bundle1.getString("nombre"));
+                break;
+            }
         }
     }
 
@@ -93,9 +97,11 @@ public class ThirdActivity extends AppCompatActivity {
         try {
             dateString = obj.getString("fechas");
         } catch (JSONException e) {
-            Toast.makeText(this,"no puede parsear el horoscopo",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"no puede parsear(calculate) el horoscopo",Toast.LENGTH_SHORT).show();
             return false;
         }
+
+        Log.i("success","calculate parse");
 
         String[] dates = dateString.split("-");
 
@@ -103,10 +109,21 @@ public class ThirdActivity extends AppCompatActivity {
         String[] lates = dates[1].split("/");
 
         int target = month * 100 + day;
-        int early = Integer.parseInt(earlys[1]) * 100 + Integer.parseInt(earlys[0]);
-        int late = Integer.parseInt(lates[1]) * 100 + Integer.parseInt(lates[0]);
+        int early;
+        int late;
 
-        return early >= target && late <= target;
+        try {
+             early = Integer.parseInt(earlys[1]) * 100 + Integer.parseInt(earlys[0]);
+             late = Integer.parseInt(lates[1]) * 100 + Integer.parseInt(lates[0]);
+        }
+        catch (NumberFormatException e) {
+            Toast.makeText(this,"no puede parsear(calculate) las fechas",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        Log.i("success","calculate");
+
+        return early >= target && target <= late;
     }
 
     private void showHoroscope(JSONObject obj,String nombre){
@@ -115,19 +132,19 @@ public class ThirdActivity extends AppCompatActivity {
             ImageView img = findViewById(R.id.img);
 
             switch (obj.getString("elemento")){
-                case "air" : {
+                case "Aire" : {
                     img.setImageResource(R.drawable.air);
                     break;
                 }
-                case "fire" : {
+                case "Fuego" : {
                     img.setImageResource(R.drawable.fire);
                     break;
                 }
-                case "earth" : {
+                case "Tierra" : {
                     img.setImageResource(R.drawable.earth);
                     break;
                 }
-                case "water" : {
+                case "Agua" : {
                     img.setImageResource(R.drawable.water);
                     break;
                 }
@@ -139,7 +156,7 @@ public class ThirdActivity extends AppCompatActivity {
         try {
             TextView txt = findViewById(R.id.txt);
 
-           String buff = nombre + "es" + obj.getString("signo") + "\n" +  obj.getString("prediccion");
+           String buff = nombre + " es " + obj.getString("signo") + "\n" +  obj.getString("prediccion");
            txt.setText(buff);
         } catch (Exception e){
             Toast.makeText(this,"no puede mostrar el elemento",Toast.LENGTH_SHORT).show();
